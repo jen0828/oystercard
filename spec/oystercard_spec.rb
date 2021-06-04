@@ -10,24 +10,26 @@ describe Oystercard do
     expect(subject.journeys).to be_empty
   end
 
-  it 'stores a journey' do
-    subject.top_up(20)
-    subject.touch_in(entry_station)
-    subject.touch_out(exit_station)
-    expect(subject.journeys).to include { journey }
-  end
+  context ' during a journy' do
+    it 'store the entry station'do
+      subject.top_up(20)
+      subject.touch_in(entry_station)
+      expect(subject.entry_station).to eq entry_station
+    end
+    
+    it 'stores a journey' do
+      subject.top_up(20)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
+      expect(subject.journeys).to include { journey }
+    end
 
-  it 'stores exit station' do
-    subject.top_up(20)
-    subject.touch_in(entry_station)
-    subject.touch_out(exit_station)
-    expect(subject.exit_station).to eq exit_station
-  end
-
-  it 'store the entry station'do
-    subject.top_up(20)
-    subject.touch_in(entry_station)
-    expect(subject.entry_station).to eq entry_station
+    it 'stores exit station' do
+      subject.top_up(20)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
+      expect(subject.exit_station).to eq exit_station
+    end
   end
 
   it 'has a balance of zero' do
