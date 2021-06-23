@@ -1,8 +1,8 @@
 ## oystercard
 
-#### Technologies used - Ruby, RSpec
-
 #### Makers Academy - Week 2, Test Driven Development(TDD)/ Pair Programming Challenges
+
+#### Technologies used - Ruby, RSpec
 
 #### User stories
 
