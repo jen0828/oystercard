@@ -1,5 +1,5 @@
-class Oystercard
 
+class Oystercard
   MAXIMUM_BALANCE = 90
   MINIMUM_CHARGE = 1
 
@@ -11,7 +11,8 @@ class Oystercard
   end
 
   def top_up(amount)
-    fail 'Maximum balance exceeded' if amount + balance > MAXIMUM_BALANCE
+    raise 'Maximum balance exceeded' if amount + balance > MAXIMUM_BALANCE
+
     @balance += amount
   end
 
@@ -20,7 +21,8 @@ class Oystercard
   end
 
   def touch_in(station)
-    fail "Insufficient balance to touch in" if balance < MINIMUM_CHARGE
+    raise 'Insufficient balance to touch in' if balance < MINIMUM_CHARGE
+
     @in_journey = true
     @entry_station = station
   end
@@ -30,12 +32,11 @@ class Oystercard
     @exit_station = station
     journey_history
     @entry_station = nil
-    
   end
 
   def journey_history
-    @journeys  << {entry_station: @entry_station, exit_station: @exit_station}
-   end
+    @journeys << { entry_station: @entry_station, exit_station: @exit_station }
+  end
 
   private
 
@@ -43,4 +44,3 @@ class Oystercard
     @balance -= amount
   end
 end
-
